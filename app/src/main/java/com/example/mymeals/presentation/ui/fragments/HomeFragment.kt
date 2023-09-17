@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymeals.databinding.FragmentHomeBinding
 import com.example.mymeals.presentation.adapters.RandomMealsAdapter
 import com.example.mymeals.presentation.viewmodels.MainViewModel
@@ -32,6 +34,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Find the RecyclerView from the layout
+        val recyclerView = binding.rvRandomMeals
+
+        // Set the layout manager for the RecyclerView
+        recyclerView.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL,false)
+
+        // Set the adapter for the RecyclerView
+        recyclerView.adapter = randomMealsAdapter
         mainViewMvvm.getTenRandomMeals()
         observeRandomMeal()
     }
