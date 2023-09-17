@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import com.example.mymeals.R
 import com.example.mymeals.databinding.ActivityMainBinding
 import com.example.mymeals.presentation.viewmodels.MainViewModel
@@ -18,16 +20,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize your MainViewModel using ViewModelProvider
-        mainViewMvvm = ViewModelProvider(this)[MainViewModel::class.java]
+        val navController = Navigation.findNavController(this, R.id.host_fragment)
 
-        mainViewMvvm.getTenRandomMeals()
-        observeRandomMeal()
+        NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
+
+
     }
 
-    private fun observeRandomMeal() {
-        mainViewMvvm.observeTenRandomMealsLiveData().observe(this) { randomMeals ->
-            Log.d("Main activity random meals", randomMeals.toString())
-        }
-    }
 }
