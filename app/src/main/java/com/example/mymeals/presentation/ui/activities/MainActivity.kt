@@ -9,7 +9,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.mymeals.R
 import com.example.mymeals.databinding.ActivityMainBinding
-import com.example.mymeals.presentation.viewmodels.MainViewModel
+import com.example.mymeals.presentation.ui.viewmodels.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

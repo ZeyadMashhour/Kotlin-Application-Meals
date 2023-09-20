@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymeals.databinding.FragmentHomeBinding
 import com.example.mymeals.presentation.adapters.RandomMealsAdapter
 import com.example.mymeals.presentation.ui.activities.MealActivity
-import com.example.mymeals.presentation.viewmodels.MainViewModel
+import com.example.mymeals.presentation.ui.viewmodels.MainViewModel
 
 
 class HomeFragment : Fragment() {

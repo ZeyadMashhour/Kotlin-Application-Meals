@@ -1,4 +1,4 @@
-package com.example.mymeals.presentation.viewmodels
+package com.example.mymeals.presentation.ui.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

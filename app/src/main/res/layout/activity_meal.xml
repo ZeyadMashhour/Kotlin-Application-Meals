@@ -25,13 +25,23 @@
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:title="Meal name">
 
-            <ImageView
-                android:id="@+id/img_meal_detail"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background"
-                app:layout_collapseMode="parallax" />
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/img_meal_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/gradient" /> <!-- Use the gradient drawable as an overlay -->
+            </FrameLayout>
+
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -59,6 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -71,7 +82,7 @@
                     android:drawableLeft="@drawable/ic_category"
                     android:drawablePadding="5dp"
                     android:text="Category :sadasd "
-                    android:textColor="@color/complementary_pale_gray"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
                 <TextView

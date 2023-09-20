@@ -1,13 +1,17 @@
 package com.example.mymeals.presentation.ui.activities
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.mymeals.R
 import com.example.mymeals.data.model.Meal
 import com.example.mymeals.databinding.ActivityMealBinding
-import com.example.mymeals.presentation.viewmodels.MealViewModel
+import com.example.mymeals.presentation.ui.viewmodels.MealViewModel
 
 class MealActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMealBinding
@@ -26,7 +30,7 @@ class MealActivity : AppCompatActivity() {
 
         MealMvvm.getMealDetailsById(mealId.toInt())
         observeRandomMeal()
-
+        openYoutubeLink()
     }
 
 
@@ -44,12 +48,17 @@ class MealActivity : AppCompatActivity() {
         binding.tvInstructions.text = mealDetails.strInstructions
         youtubeLink = mealDetails.strYoutube
         binding.collapsingToolbar.title = mealDetails.strMeal
+        binding.collapsingToolbar.setCollapsedTitleTextColor(ContextCompat.getColor(applicationContext, R.color.cool_white))
+        binding.collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(applicationContext, R.color.cool_white))
         Glide.with(applicationContext)
             .load(mealDetails.strMealThumb)
             .into(binding.imgMealDetail)
     }
     private fun openYoutubeLink(){
-        //TODO implement opening youtube
+        binding.imgYoutube.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(youtubeLink))
+            startActivity(intent)
+        }
     }
 
     private fun saveMeal(){
