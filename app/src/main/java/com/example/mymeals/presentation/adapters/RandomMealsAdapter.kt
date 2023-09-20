@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.mymeals.data.model.Meal
 import com.example.mymeals.data.model.MealList
 import com.example.mymeals.databinding.RandomItemBinding
 
 class RandomMealsAdapter : RecyclerView.Adapter<RandomMealsAdapter.RandomMealsViewHolder>(){
     private  var mealsList: MealList = MealList(emptyList())
-
+    lateinit var onItemClick:((Meal) -> Unit)
 
     fun setMeals(mealsList: MealList){
         this.mealsList = mealsList
@@ -24,7 +25,7 @@ class RandomMealsAdapter : RecyclerView.Adapter<RandomMealsAdapter.RandomMealsVi
             .into(holder.binding.imgItem)
         Log.d("Adapter", mealsList.meals[position].strMeal)
         holder.itemView.setOnClickListener {
-            //TODO do smth here
+            onItemClick.invoke(mealsList.meals[position])
         }
     }
 

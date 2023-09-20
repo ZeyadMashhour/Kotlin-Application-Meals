@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_APN_SETTINGS" />
 
     <application
@@ -14,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMeals"
         tools:targetApi="31">
+        <activity
+            android:name=".presentation.ui.activities.MealActivity"
+            android:exported="false" />
         <activity
             android:name=".presentation.ui.activities.MainActivity"
             android:exported="true">
