@@ -12,6 +12,6 @@ interface MealAPI {
     @GET("randomselection.php")
     fun getTenRandomMeals(): Call<MealList>
     @GET("lookup.php")
-    fun getMealDetailsById(@Query("i") id: String): Call<Meal>
+    fun getMealDetailsById(@Query("i") id: Int): Call<MealList>
 
 }

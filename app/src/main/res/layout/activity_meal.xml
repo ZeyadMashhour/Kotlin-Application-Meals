@@ -72,8 +72,7 @@
                     android:drawablePadding="5dp"
                     android:text="Category :sadasd "
                     android:textColor="@color/complementary_pale_gray"
-                    android:textSize="14sp"
-                    android:visibility="invisible" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tv_areaInfo"
@@ -85,8 +84,7 @@
                     android:drawablePadding="5dp"
                     android:text="Area : "
                     android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:visibility="invisible" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
