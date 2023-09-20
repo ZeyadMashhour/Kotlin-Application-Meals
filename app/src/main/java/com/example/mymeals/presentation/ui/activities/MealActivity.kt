@@ -48,4 +48,11 @@ class MealActivity : AppCompatActivity() {
             .load(mealDetails.strMealThumb)
             .into(binding.imgMealDetail)
     }
+    private fun openYoutubeLink(){
+        //TODO implement opening youtube
+    }
+
+    private fun saveMeal(){
+        //TODO implement database to save favourite meals
+    }
 }
