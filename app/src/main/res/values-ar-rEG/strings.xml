@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyMeals</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">الشاشة الرئيسية</string>
+    <string name="language">الدولة</string>
+    <string name="things_we_recommend">أشياء نوصي بها</string>
+</resources>
