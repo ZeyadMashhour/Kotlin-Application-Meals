@@ -5,4 +5,5 @@
     <string name="home">الشاشة الرئيسية</string>
     <string name="language">الدولة</string>
     <string name="things_we_recommend">أشياء نوصي بها</string>
+    <string name="favorites">مفضل</string>
 </resources>

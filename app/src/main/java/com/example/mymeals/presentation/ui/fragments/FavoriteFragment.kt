@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymeals.R
 import com.example.mymeals.data.database.DatabaseHandler
@@ -33,7 +34,7 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = binding.rvFavoriteMeals
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL,false)
         recyclerView.adapter = favoriteMealsAdapter
         setupMealsInTheAdapter()
     }

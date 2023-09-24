@@ -96,13 +96,13 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
             val meals = mutableListOf<Meal>()
             while (cursor.moveToNext()) {
                 val meal = Meal(
-                    cursor.getInt(cursor.run { getColumnIndex(KEY_ID_MEAL) }).toString(),
-                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_AREA) }),
-                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_CATEGORY) }),
-                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_INSTRUCTIONS) }),
-                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_MEAL) }),
-                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_MEAL_THUMB) }),
-                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_YOUTUBE) })
+                    idMeal = cursor.getInt(cursor.run { getColumnIndex(KEY_ID_MEAL) }).toString(),
+                    strArea = cursor.getString(cursor.run { getColumnIndex(KEY_STR_AREA) }),
+                    strCategory = cursor.getString(cursor.run { getColumnIndex(KEY_STR_CATEGORY) }),
+                    strInstructions = cursor.getString(cursor.run { getColumnIndex(KEY_STR_INSTRUCTIONS) }),
+                    strMeal = cursor.getString(cursor.run { getColumnIndex(KEY_STR_MEAL) }),
+                    strMealThumb = cursor.getString(cursor.run { getColumnIndex(KEY_STR_MEAL_THUMB) }),
+                    strYoutube = cursor.getString(cursor.run { getColumnIndex(KEY_STR_YOUTUBE) })
                 )
                 meals.add(meal)
             }

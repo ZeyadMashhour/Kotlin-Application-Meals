@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_navigation"
-    app:startDestination="@id/favoriteFragment">
+    app:startDestination="@id/navigation_favorite">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/navigation_home"
         android:name="com.example.mymeals.presentation.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/countryFragment"
+        android:id="@+id/navigation_country"
         android:name="com.example.mymeals.presentation.ui.fragments.CountryFragment"
         android:label="fragment_country"
         tools:layout="@layout/fragment_country" />
     <fragment
-        android:id="@+id/favoriteFragment"
+        android:id="@+id/navigation_favorite"
         android:name="com.example.mymeals.presentation.ui.fragments.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />

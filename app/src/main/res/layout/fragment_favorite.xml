@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.FavoriteFragment">
+    android:orientation="vertical"
+    tools:context=".presentation.ui.fragments.FavoriteFragment"
+    android:background="@color/primary_color">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/things_we_recommend"
+        android:textStyle="italic|bold"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="@color/primary_color"
+        android:padding="5dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorite_meals"
@@ -11,4 +23,5 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-</FrameLayout>
+
+</LinearLayout>

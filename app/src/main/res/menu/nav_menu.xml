@@ -6,4 +6,7 @@
     <item android:title="@string/language"
         android:icon="@drawable/ic_language_24"
         android:id="@+id/country_fragment"/>
+    <item android:title="@string/favorites"
+        android:icon="@drawable/ic_favorite_border_24"
+        android:id="@+id/favorite_fragment"/>
 </menu>
