@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.ui.fragments.HomeFragment">
+    tools:context=".presentation.ui.fragments.HomeFragment"
+    android:background="@color/primary_color">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
@@ -20,9 +21,7 @@
         android:id="@+id/rv_random_meals"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="25dp" />
+        android:layout_weight="1"/>
+
 
 </LinearLayout>

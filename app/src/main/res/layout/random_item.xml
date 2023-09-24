@@ -7,12 +7,26 @@
     app:cardUseCompatPadding="true"
     android:elevation="@dimen/card_elevation">
 
-    <ImageView
-        android:id="@+id/img_item"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@color/accent_color"
-        android:layout_margin="10dp"/>
+        android:background="@drawable/gradient">
 
+        <ImageView
+            android:id="@+id/img_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@color/accent_color"
+            android:layout_margin="0dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:textColor="@color/black"/>
+
+    </FrameLayout>
 </androidx.cardview.widget.CardView>

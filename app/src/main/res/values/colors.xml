@@ -8,5 +8,6 @@
     <color name="accent_color">#FFC0CB</color>
     <color name="cool_white">#F5F5F5</color>
     <color name="complementary_soft_yellow">#FFFF99</color>
+    <color name="complementary_color">#003F34</color>
     <color name="complementary_pale_gray">#D3D3D3</color>
 </resources>

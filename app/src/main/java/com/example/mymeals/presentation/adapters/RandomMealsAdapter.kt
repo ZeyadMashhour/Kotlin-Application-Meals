@@ -27,6 +27,7 @@ class RandomMealsAdapter : RecyclerView.Adapter<RandomMealsAdapter.RandomMealsVi
         holder.itemView.setOnClickListener {
             onItemClick.invoke(mealsList.meals[position])
         }
+        holder.binding.tvView.text = mealsList.meals[position].strMeal
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RandomMealsViewHolder {
