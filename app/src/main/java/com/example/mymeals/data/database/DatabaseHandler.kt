@@ -25,7 +25,7 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
 
     override fun onCreate(db: SQLiteDatabase?) {
 
-        val CREATE_MEAL_TABLE = ("CREATE TABLE " + TABLE_MEAL + "("
+        val createMealTable = ("CREATE TABLE " + TABLE_MEAL + "("
                 + KEY_ID_MEAL + " INTEGER PRIMARY KEY,"
                 + KEY_STR_AREA + " TEXT,"
                 + KEY_STR_CATEGORY + " TEXT,"
@@ -33,7 +33,7 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
                 + KEY_STR_MEAL + " TEXT,"
                 + KEY_STR_MEAL_THUMB + " TEXT,"
                 + KEY_STR_YOUTUBE + " TEXT)")
-        db?.execSQL(CREATE_MEAL_TABLE)
+        db?.execSQL(createMealTable)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -54,10 +54,10 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
         val db = this.writableDatabase
 
         // Check if the ID already exists
-        if (meal.idMeal != null && mealExists(meal.idMeal.toInt(), db)) {
+        if (mealExists(meal.idMeal.toInt(), db)) {
             // The ID already exists, handle this case accordingly
             db.close()
-            return -1 // You can choose an appropriate error code
+            return -1
         }
 
         val contentValues = ContentValues()
@@ -81,6 +81,33 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
         val exists = cursor.moveToFirst()
         cursor.close()
         return exists
+    }
+
+    fun getMealsFromDatabase(): List<Meal> {
+        val mealList = mutableListOf<Meal>()
+        val db = this.readableDatabase
+
+        val query = "SELECT * FROM $TABLE_MEAL"
+
+        val cursor = db.rawQuery(query, null)
+
+        cursor.use {
+            while (cursor.moveToNext()) {
+                val meal = Meal(
+                    cursor.getInt(cursor.run { getColumnIndex(KEY_ID_MEAL) }).toString(),
+                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_AREA) }),
+                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_CATEGORY) }),
+                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_INSTRUCTIONS) }),
+                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_MEAL) }),
+                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_MEAL_THUMB) }),
+                    cursor.getString(cursor.run { getColumnIndex(KEY_STR_YOUTUBE) })
+                )
+                mealList.add(meal)
+            }
+        }
+
+        db.close()
+        return mealList
     }
 
 
