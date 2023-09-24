@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragments.FavoriteFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_favorite_meals"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 </FrameLayout>

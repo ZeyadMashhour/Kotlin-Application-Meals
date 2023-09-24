@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.mymeals.data.model.Meal
+import com.example.mymeals.data.model.MealList
 
 class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -83,8 +84,8 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
         return exists
     }
 
-    fun getMealsFromDatabase(): List<Meal> {
-        val mealList = mutableListOf<Meal>()
+    fun getMealsFromDatabase(): MealList {
+        var mealList = MealList(emptyList())
         val db = this.readableDatabase
 
         val query = "SELECT * FROM $TABLE_MEAL"
@@ -92,6 +93,7 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
         val cursor = db.rawQuery(query, null)
 
         cursor.use {
+            val meals = mutableListOf<Meal>()
             while (cursor.moveToNext()) {
                 val meal = Meal(
                     cursor.getInt(cursor.run { getColumnIndex(KEY_ID_MEAL) }).toString(),
@@ -102,13 +104,15 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
                     cursor.getString(cursor.run { getColumnIndex(KEY_STR_MEAL_THUMB) }),
                     cursor.getString(cursor.run { getColumnIndex(KEY_STR_YOUTUBE) })
                 )
-                mealList.add(meal)
+                meals.add(meal)
             }
+            mealList.meals = meals
         }
 
         db.close()
         return mealList
     }
+
 
 
 }

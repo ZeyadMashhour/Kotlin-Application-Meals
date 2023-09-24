@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/favoriteFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -15,4 +15,9 @@
         android:name="com.example.mymeals.presentation.ui.fragments.CountryFragment"
         android:label="fragment_country"
         tools:layout="@layout/fragment_country" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.mymeals.presentation.ui.fragments.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
 </navigation>

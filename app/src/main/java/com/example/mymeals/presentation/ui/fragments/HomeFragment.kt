@@ -36,13 +36,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Find the RecyclerView from the layout
+
         val recyclerView = binding.rvRandomMeals
 
-        // Set the layout manager for the RecyclerView
         recyclerView.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL,false)
 
-        // Set the adapter for the RecyclerView
         recyclerView.adapter = randomMealsAdapter
         mainViewMvvm.getTenRandomMeals()
         observeRandomMeal()
