@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.mymeals.R
+import com.example.mymeals.data.database.DatabaseHandler
 import com.example.mymeals.data.model.Meal
 import com.example.mymeals.databinding.ActivityMealBinding
 import com.example.mymeals.presentation.ui.viewmodels.MealViewModel
@@ -31,6 +32,10 @@ class MealActivity : AppCompatActivity() {
         MealMvvm.getMealDetailsById(mealId.toInt())
         observeRandomMeal()
         openYoutubeLink()
+
+        binding.btnFavourite.setOnClickListener {
+            saveMeal()
+        }
     }
 
 
@@ -62,6 +67,8 @@ class MealActivity : AppCompatActivity() {
     }
 
     private fun saveMeal(){
-        //TODO implement database to save favourite meals
+        val dbHandler = DatabaseHandler(this)
+        val result = dbHandler.addMeal(mealDetails)
+        Log.d("database", result.toString())
     }
 }
