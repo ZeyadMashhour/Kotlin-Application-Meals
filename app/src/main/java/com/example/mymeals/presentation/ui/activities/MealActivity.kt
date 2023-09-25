@@ -67,17 +67,17 @@ class MealActivity : AppCompatActivity() {
 
     }
     private fun openYoutubeLink(){
+        val youTubePlayerView = binding.youtubePlayerView
+        youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                val videoId = extractVideoId(youtubeLink)
+                Log.d("YouTube", videoId)
+                youTubePlayer.cueVideo(videoId, 0f)
+            }
+        })
         binding.imgYoutube.setOnClickListener {
             binding.youtubePlayerView.visibility = View.VISIBLE
             binding.imgYoutube.visibility = View.GONE
-            val youTubePlayerView = binding.youtubePlayerView
-            youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-                override fun onReady(youTubePlayer: YouTubePlayer) {
-                    val videoId = extractVideoId(youtubeLink)
-                    Log.d("Youtbe", videoId)
-                    youTubePlayer.loadVideo(videoId, 0f)
-                }
-            })
         }
 
     }
