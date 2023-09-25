@@ -83,5 +83,7 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-rc01")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-rc01")
 
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
+
 
 }
