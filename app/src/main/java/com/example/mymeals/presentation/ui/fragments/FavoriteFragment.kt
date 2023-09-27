@@ -1,5 +1,6 @@
 package com.example.mymeals.presentation.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import com.example.mymeals.R
 import com.example.mymeals.data.database.DatabaseHandler
 import com.example.mymeals.databinding.FragmentFavoriteBinding
 import com.example.mymeals.presentation.adapters.FavoriteMealsAdapter
+import com.example.mymeals.presentation.ui.activities.MealActivity
 
 
 class FavoriteFragment : Fragment() {
@@ -37,6 +39,7 @@ class FavoriteFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL,false)
         recyclerView.adapter = favoriteMealsAdapter
         setupMealsInTheAdapter()
+        onPopularItemClick()
     }
 
     private fun setupMealsInTheAdapter(){
@@ -44,6 +47,15 @@ class FavoriteFragment : Fragment() {
         val favoriteMeals = db.getMealsFromDatabase()
         Log.d("favorite meals" , favoriteMeals.toString())
         favoriteMealsAdapter.setMeals(favoriteMeals)
+    }
+
+    private fun onPopularItemClick() {
+        favoriteMealsAdapter.onItemClick = {meal->
+            val intent = Intent(activity, MealActivity::class.java)
+            intent.putExtra("MEAL_ID", meal.idMeal)
+            Log.d("Test", "$meal")
+            startActivity(intent)
+        }
     }
 
 
