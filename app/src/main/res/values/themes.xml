@@ -1,27 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.MyMeals" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary_color</item>
-        <item name="colorPrimaryVariant">@color/secondary_color</item>
-        <item name="colorOnPrimary">@color/accent_color</item>
-
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryVariant">@color/green_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/complementary_pale_gray</item>
-        <item name="colorSecondaryVariant">@color/complementary_soft_yellow</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/blue_dark</item>
         <item name="colorOnSecondary">@color/black</item>
-
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/accent_color</item>
-        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/black</item>
     </style>
     <style name="CustomToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <item name="android:textColorPrimary">@color/primary_color</item>
-        <item name="colorControlNormal">@color/cool_white</item>
+        <item name="android:textColorPrimary">@color/green</item>
+        <item name="colorControlNormal">@color/blue</item>
     </style>
 
     <style name="Theme.MyMeals" parent="Base.Theme.MyMeals">
-
 
     </style>
 </resources>

@@ -4,6 +4,7 @@ import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +25,8 @@ class MealActivity : AppCompatActivity() {
     private lateinit var mealDetails: Meal
     private lateinit var youtubeLink: String
     private lateinit var youTubePlayerView: YouTubePlayerView
+    private var isInDatabase: Boolean = false
+    private lateinit var dbHandler: DatabaseHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +41,8 @@ class MealActivity : AppCompatActivity() {
         observeRandomMeal()
         openYoutubeLink()
 
+        dbHandler = DatabaseHandler(this)
+        isInDatabase = dbHandler.mealExists(mealId.toInt())
 
         binding.btnFavourite.setOnClickListener {
             saveMeal()
@@ -59,8 +64,8 @@ class MealActivity : AppCompatActivity() {
         binding.tvInstructions.text = mealDetails.strInstructions
         youtubeLink = mealDetails.strYoutube
         binding.collapsingToolbar.title = mealDetails.strMeal
-        binding.collapsingToolbar.setCollapsedTitleTextColor(ContextCompat.getColor(applicationContext, R.color.cool_white))
-        binding.collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(applicationContext, R.color.cool_white))
+        binding.collapsingToolbar.setCollapsedTitleTextColor(ContextCompat.getColor(applicationContext, R.color.white))
+        binding.collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(applicationContext, R.color.white))
         Glide.with(applicationContext)
             .load(mealDetails.strMealThumb)
             .into(binding.imgMealDetail)
@@ -87,8 +92,14 @@ class MealActivity : AppCompatActivity() {
     }
 
     private fun saveMeal(){
-        val dbHandler = DatabaseHandler(this)
-        val result = dbHandler.addMeal(mealDetails)
-        Log.d("database", result.toString())
+        if(isInDatabase){
+            Toast.makeText(this, "Already exisits in database now removed", Toast.LENGTH_SHORT).show()
+            val result = dbHandler.deleteMeal(mealDetails)
+            Log.d("database", result.toString())
+        }else{
+            val result = dbHandler.addMeal(mealDetails)
+            Log.d("database", result.toString())
+        }
+
     }
 }

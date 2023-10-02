@@ -55,7 +55,7 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
         val db = this.writableDatabase
 
         // Check if the ID already exists
-        if (mealExists(meal.idMeal.toInt(), db)) {
+        if (mealExists(meal.idMeal.toInt())) {
             // The ID already exists, handle this case accordingly
             db.close()
             return -1
@@ -76,7 +76,8 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
         return result
     }
 
-    private fun mealExists(id: Int, db: SQLiteDatabase): Boolean {
+    fun mealExists(id: Int): Boolean {
+        val db = this.readableDatabase
         val query = "SELECT $KEY_ID_MEAL FROM $TABLE_MEAL WHERE $KEY_ID_MEAL = $id"
         val cursor = db.rawQuery(query, null)
         val exists = cursor.moveToFirst()
@@ -112,7 +113,6 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context, DATABASE_NAME
         db.close()
         return mealList
     }
-
 
 
 }

@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             android:theme="@style/CustomToolbarTheme"
-            app:contentScrim="@color/accent_color"
+            app:contentScrim="@color/blue"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:title="Meal name">
 
@@ -42,13 +42,12 @@
                     android:src="@drawable/gradient" /> <!-- Use the gradient drawable as an overlay -->
             </FrameLayout>
 
-
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 app:layout_collapseMode="pin"
-                app:titleTextColor="@color/cool_white" />
+                app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -82,7 +81,6 @@
                     android:drawableLeft="@drawable/ic_category"
                     android:drawablePadding="5dp"
                     android:text="Category :sadasd "
-                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
                 <TextView
@@ -94,7 +92,6 @@
                     android:drawableLeft="@drawable/ic_area"
                     android:drawablePadding="5dp"
                     android:text="Area : "
-                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -106,7 +103,6 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:includeFontPadding="false"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +114,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
-                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_instructions" />
@@ -159,11 +154,11 @@
         android:baselineAlignBottom="false"
         android:clickable="true"
         android:src="@drawable/ic_baseline_save_24"
-        app:backgroundTint="@color/accent_color"
+        app:backgroundTint="@color/blue"
         app:fabSize="normal"
         app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="bottom|end"
-        app:tint="@color/cool_white" />
+        app:tint="@color/white" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressBar"
