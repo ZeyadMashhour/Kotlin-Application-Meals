@@ -5,7 +5,7 @@
         android:id="@+id/navigation_home"/>
     <item android:title="@string/language"
         android:icon="@drawable/ic_language_24"
-        android:id="@+id/navigation_country"/>
+        android:id="@+id/navigation_search"/>
     <item android:title="@string/favorites"
         android:icon="@drawable/ic_favorite_border_24"
         android:id="@+id/navigation_favorite"/>

@@ -1,5 +1,5 @@
 package com.example.mymeals.data.model
 
-data class Categories(
+data class CategoryList(
     val categories: List<Category>
 )

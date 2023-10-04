@@ -47,6 +47,7 @@ class MealActivity : AppCompatActivity() {
         binding.btnFavourite.setOnClickListener {
             saveMeal()
         }
+
     }
 
 
@@ -93,7 +94,7 @@ class MealActivity : AppCompatActivity() {
 
     private fun saveMeal(){
         if(isInDatabase){
-            Toast.makeText(this, "Already exisits in database now removed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Already exists in database now removed", Toast.LENGTH_SHORT).show()
             val result = dbHandler.deleteMeal(mealDetails)
             Log.d("database", result.toString())
         }else{
@@ -102,4 +103,5 @@ class MealActivity : AppCompatActivity() {
         }
 
     }
+
 }

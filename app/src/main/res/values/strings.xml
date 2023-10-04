@@ -3,7 +3,7 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>
-    <string name="language">Country</string>
+    <string name="language">Search</string>
     <string name="things_we_recommend">THINGS WE RECOMMEND</string>
     <string name="favorites">Favorites</string>
     <string name="title_activity_main2">MainActivity2</string>
@@ -11,4 +11,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="your_selection">YOUR SELECTION</string>
+    <string name="area_name">Area name</string>
+    <string name="category_name">Category name</string>
+    <string name="categories">Categories</string>
+    <string name="cuisines">Cuisines</string>
 </resources>

@@ -1,8 +1,11 @@
 package com.example.mymeals.presentation.ui.viewmodels
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.mymeals.data.model.CategoryList
+import com.example.mymeals.data.model.Category
 import com.example.mymeals.data.model.Meal
 import com.example.mymeals.data.model.MealList
 import com.example.mymeals.data.retrofit.MealAPI
@@ -13,6 +16,7 @@ import retrofit2.Response
 
 class MealViewModel: ViewModel() {
     private var mealDetailLiveData = MutableLiveData<Meal>()
+    private var categoriesLiveData = MutableLiveData<List<Category>>()
 
     fun getMealDetailsById(id: Int){
         val mealsApi = RetrofitInstance.instance.create(MealAPI::class.java)
@@ -37,4 +41,5 @@ class MealViewModel: ViewModel() {
     fun observeMealDetailsLiveData(): MutableLiveData<Meal> {
         return mealDetailLiveData
     }
+
 }
