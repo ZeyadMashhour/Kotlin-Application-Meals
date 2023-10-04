@@ -6,4 +6,13 @@
     <string name="language">الدولة</string>
     <string name="things_we_recommend">أشياء نوصي بها</string>
     <string name="favorites">مفضل</string>
+
+    <string name="title_home">الصفحة الرئيسية</string>
+    <string name="title_dashboard">لوحة التحكم</string>
+    <string name="title_notifications">الإشعارات</string>
+    <string name="your_selection">اختيارك</string>
+    <string name="area_name">اسم المنطقة</string>
+    <string name="category_name">اسم الفئة</string>
+    <string name="categories">الفئات</string>
+    <string name="cuisines">الأطعمة</string>
 </resources>
