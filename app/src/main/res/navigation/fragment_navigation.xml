@@ -11,11 +11,6 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/navigation_search"
-        android:name="com.example.mymeals.presentation.ui.fragments.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
-    <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.example.mymeals.presentation.ui.fragments.FavoriteFragment"
         android:label="fragment_favorite"

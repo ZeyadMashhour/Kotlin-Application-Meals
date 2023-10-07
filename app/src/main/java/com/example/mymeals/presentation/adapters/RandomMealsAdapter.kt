@@ -38,4 +38,5 @@ class RandomMealsAdapter : RecyclerView.Adapter<RandomMealsAdapter.RandomMealsVi
         return mealsList.meals.size
     }
 
+
 }
