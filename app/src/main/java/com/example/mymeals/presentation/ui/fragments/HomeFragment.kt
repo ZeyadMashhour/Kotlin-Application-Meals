@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mymeals.data.model.Meal
 import com.example.mymeals.databinding.FragmentHomeBinding
 import com.example.mymeals.presentation.adapters.CategoriesAdapter
 import com.example.mymeals.presentation.adapters.RandomMealsAdapter
@@ -46,8 +48,18 @@ class HomeFragment : Fragment() {
         observeRandomMeal()
         mainViewMvvm.getCategories()
         observeCategoriesLiveData()
-        mainViewMvvm.getCuisinesList()
         onPopularItemClick()
+
+        binding.imgSearch.setOnClickListener {
+            val meal = binding.etSearch.text.toString().trim()  // Trim to remove leading/trailing white spaces
+
+            if (meal.isNotEmpty()) {
+                mainViewMvvm.searchMeal(meal)
+                observeSearchMealLiveData()
+            } else {
+                Toast.makeText(context, "You can't have the search bar empty", Toast.LENGTH_SHORT).show()
+            }
+        }
 
 
     }
@@ -70,10 +82,7 @@ class HomeFragment : Fragment() {
     }
     private fun onPopularItemClick() {
         randomMealsAdapter.onItemClick = {meal->
-            val intent = Intent(activity, MealActivity::class.java)
-            intent.putExtra("MEAL_ID", meal.idMeal)
-            Log.d("Test", "$meal")
-            startActivity(intent)
+            startMealActivity(meal)
         }
     }
 
@@ -85,11 +94,23 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeCategoriesLiveData() {
-        // Make sure that observeCategoriesLiveData() returns LiveData in your MainViewModel
         mainViewMvvm.observeCategoriesLiveData().observe(viewLifecycleOwner) { categories ->
-            // Update your UI with the observed categories here using categoriesAdapter
             categoriesAdapter.setCategoryList(categories)
         }
+    }
+
+    private fun observeSearchMealLiveData() {
+        mainViewMvvm.observeMealSearchLiveData().observe(viewLifecycleOwner) { meals ->
+            if (meals.meals != null){
+                startMealActivity(meals.meals[0])
+            }else
+                Toast.makeText(context, "The meal doesn't exist", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun startMealActivity(meal: Meal){
+        val intent = Intent(activity, MealActivity::class.java)
+        intent.putExtra("MEAL_ID", meal.idMeal)
+        startActivity(intent)
     }
 
 }

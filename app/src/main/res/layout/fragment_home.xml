@@ -33,7 +33,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_home"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -42,16 +42,30 @@
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_search"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Search..."
+                        android:layout_weight="1"
+                        android:inputType="text"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:lines="1"
+                        android:maxLines="1"/>
+
                     <ImageView
                         android:id="@+id/img_search"
                         android:layout_width="32dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="bottom|center"
-                        android:layout_marginStart="230dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_search"
                         android:contentDescription="@string/search_button"/>
                 </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/tv_would_like_to_eat"

@@ -18,7 +18,7 @@ import retrofit2.Response
 class MainViewModel : ViewModel(){
     private var randomMealsLiveData = MutableLiveData<MealList>()
     private var categoriesLiveData = MutableLiveData<CategoryList>()
-    private var cuisinesLiveData = MutableLiveData<AreaList>()
+    private var mealSearchLiveData = MutableLiveData<MealList>()
 
     fun getTenRandomMeals(){
         val mealsApi = RetrofitInstance.instance.create(MealAPI::class.java)
@@ -27,7 +27,6 @@ class MainViewModel : ViewModel(){
                 if(response.body() !=null){
                     val randomMeals:MealList = response.body()!!
                     randomMealsLiveData.value = randomMeals
-                    Log.d("Random Fragments top 10 random meals", randomMeals.toString())
                 }
                 else{
                     return
@@ -50,7 +49,6 @@ class MainViewModel : ViewModel(){
             override fun onResponse(call: Call<CategoryList>, response: Response<CategoryList>) {
                 if(response.body()!=null){
                     categoriesLiveData.value = response.body()!!
-                    Log.d("HomeFragment", response.body()!!.categories.toString())
                 }else{
                     return
                 }
@@ -67,33 +65,30 @@ class MainViewModel : ViewModel(){
         return categoriesLiveData
     }
 
-    fun getCuisinesList() {
+    fun searchMeal(meal: String) {
         val mealsApi = RetrofitInstance.instance.create(MealAPI::class.java)
-        mealsApi.getCuisinesList().enqueue(object : Callback<AreaList> {
-            override fun onResponse(call: Call<AreaList>, response: Response<AreaList>) {
+        mealsApi.searchMeal(meal).enqueue(object : Callback<MealList> {
+            override fun onResponse(call: Call<MealList>, response: Response<MealList>) {
                 if (response.isSuccessful) {
-                    val areaList: AreaList? = response.body()
-                    if (areaList != null) {
-                        cuisinesLiveData.value = areaList
-                        Log.d("HomeFragment", "Areas received: ${areaList.areas}")
+                    if (response.body() != null) {
+                        mealSearchLiveData.value = response.body()
+                        Log.d("MainViewModel", "Searched meals received: ${response.body()!!.meals}")
                     } else {
-                        Log.d("HomeFragment", "Response body is null")
+                        null.also { mealSearchLiveData.value = it }
+                        Log.d("MainViewModel", "Response body is null")
                     }
                 } else {
-                    Log.d("HomeFragment", "API response is not successful")
+                    Log.d("MainViewModel", "API response is not successful")
                 }
             }
 
-            override fun onFailure(call: Call<AreaList>, t: Throwable) {
-                Log.d("HomeFragment", "API call failed: ${t.message}")
+            override fun onFailure(call: Call<MealList>, t: Throwable) {
+                Log.d("MainViewModel", "API call failed: ${t.message}")
             }
         })
     }
-
-
-
-
-    fun observeCuisinesLiveData():LiveData<AreaList>{
-        return cuisinesLiveData
+    fun observeMealSearchLiveData(): LiveData<MealList> {
+        return mealSearchLiveData
     }
+
 }

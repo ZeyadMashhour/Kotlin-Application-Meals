@@ -21,5 +21,6 @@ interface MealAPI {
     @GET("list.php?a=list")
     fun getCuisinesList(): Call<AreaList>
 
-
+    @GET("search.php")
+    fun searchMeal(@Query("s")meal:String): Call<MealList>
 }
