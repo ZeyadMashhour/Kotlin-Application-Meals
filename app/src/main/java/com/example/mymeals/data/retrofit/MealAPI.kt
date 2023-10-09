@@ -1,5 +1,6 @@
 package com.example.mymeals.data.retrofit
 
+import com.example.mymeals.data.model.AreaList
 import com.example.mymeals.data.model.CategoryList
 import com.example.mymeals.data.model.MealList
 import retrofit2.Call
@@ -16,5 +17,9 @@ interface MealAPI {
 
     @GET("categories.php")
     fun getCategoriesList(): Call<CategoryList>
+
+    @GET("list.php?a=list")
+    fun getCuisinesList(): Call<AreaList>
+
 
 }

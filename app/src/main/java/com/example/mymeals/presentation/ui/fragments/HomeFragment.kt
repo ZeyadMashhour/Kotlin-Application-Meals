@@ -46,9 +46,14 @@ class HomeFragment : Fragment() {
         observeRandomMeal()
         mainViewMvvm.getCategories()
         observeCategoriesLiveData()
+        mainViewMvvm.getCuisinesList()
         onPopularItemClick()
 
+
     }
+
+
+
 
     private fun prepareRandomMealsRecyclerView() {
         binding.rvRandomMeals.apply {

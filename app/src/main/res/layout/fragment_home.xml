@@ -99,16 +99,14 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/category_card"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
-                    android:layout_marginEnd="25dp"
                     android:elevation="3dp"
                     app:cardCornerRadius="10dp"
                     app:cardPreventCornerOverlap="false"
                     app:cardUseCompatPadding="true"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_category"
-                    >
+                    app:layout_constraintTop_toBottomOf="@id/tv_category">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_categories"
@@ -117,38 +115,6 @@
                         android:scrollbars="none" />
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/tv_country"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:text="@string/cuisines"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/tv_would_like_to_eat"
-                    app:layout_constraintTop_toBottomOf="@id/category_card" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/country_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="25dp"
-                    android:elevation="2dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_country"
-                    >
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rec_view_categories"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scrollbars="none" />
-                </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
