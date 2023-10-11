@@ -19,6 +19,7 @@ class MainViewModel : ViewModel(){
     private var randomMealsLiveData = MutableLiveData<MealList>()
     private var categoriesLiveData = MutableLiveData<CategoryList>()
     private var mealSearchLiveData = MutableLiveData<MealList>()
+    private var categoryMealsLiveData = MutableLiveData<MealList>()
 
     fun getTenRandomMeals(){
         val mealsApi = RetrofitInstance.instance.create(MealAPI::class.java)
@@ -71,7 +72,6 @@ class MainViewModel : ViewModel(){
             override fun onResponse(call: Call<MealList>, response: Response<MealList>) {
                 if (response.isSuccessful) {
                     if (response.body() != null) {
-                        mealSearchLiveData.value = response.body()
                         Log.d("MainViewModel", "Searched meals received: ${response.body()!!.meals}")
                     } else {
                         null.also { mealSearchLiveData.value = it }
@@ -89,6 +89,33 @@ class MainViewModel : ViewModel(){
     }
     fun observeMealSearchLiveData(): LiveData<MealList> {
         return mealSearchLiveData
+    }
+
+    fun showCategoryMeals(meal: String) {
+        val mealsApi = RetrofitInstance.instance.create(MealAPI::class.java)
+        mealsApi.showCategoryMeals(meal).enqueue(object : Callback<MealList> {
+            override fun onResponse(call: Call<MealList>, response: Response<MealList>) {
+                if (response.isSuccessful) {
+                    if (response.body() != null) {
+                        categoryMealsLiveData.value = response.body()
+                        Log.d("observer mainvew show", "Searched meals received: ${response.body()}")
+                    } else {
+                        null.also { categoryMealsLiveData.value = it }
+                        Log.d("MainViewModel", "Response body is null")
+                    }
+                } else {
+                    Log.d("MainViewModel", "API response is not successful")
+                }
+            }
+
+            override fun onFailure(call: Call<MealList>, t: Throwable) {
+                Log.d("MainViewModel", "API call failed: ${t.message}")
+            }
+        })
+    }
+    fun observeCategoryMealsLiveData(): LiveData<MealList> {
+        Log.d("observer mainvew observe", categoryMealsLiveData.value.toString())
+        return categoryMealsLiveData
     }
 
 }

@@ -16,4 +16,5 @@
     <string name="cuisines">Cuisines</string>
     <string name="what_would_you_like_to_eat">What would you like to eat</string>
     <string name="search_button">search button</string>
+    <string name="search_bar_error">You can\'t have the search bar empty</string>
 </resources>

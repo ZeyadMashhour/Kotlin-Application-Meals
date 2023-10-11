@@ -2,7 +2,6 @@ package com.example.mymeals.presentation.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mymeals.R
 import com.example.mymeals.data.model.Meal
 import com.example.mymeals.databinding.FragmentHomeBinding
 import com.example.mymeals.presentation.adapters.CategoriesAdapter
@@ -29,6 +29,7 @@ class HomeFragment : Fragment() {
         mainViewMvvm = ViewModelProvider(this)[MainViewModel::class.java]
         randomMealsAdapter = RandomMealsAdapter()
         categoriesAdapter = CategoriesAdapter()
+
     }
 
     override fun onCreateView(
@@ -49,22 +50,29 @@ class HomeFragment : Fragment() {
         mainViewMvvm.getCategories()
         observeCategoriesLiveData()
         onPopularItemClick()
+        onCategoryItemClick()
+
 
         binding.imgSearch.setOnClickListener {
-            val meal = binding.etSearch.text.toString().trim()  // Trim to remove leading/trailing white spaces
+            val meal = binding.etSearch.text.toString().trim() 
 
             if (meal.isNotEmpty()) {
                 mainViewMvvm.searchMeal(meal)
                 observeSearchMealLiveData()
             } else {
-                Toast.makeText(context, "You can't have the search bar empty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.search_bar_error), Toast.LENGTH_SHORT).show()
             }
         }
 
-
     }
-
-
+    private fun onCategoryItemClick() {
+        categoriesAdapter.onItemClick = { category ->
+            mainViewMvvm.showCategoryMeals(category.strCategory)
+            val categoryName = category.strCategory
+            val dialogFragment = CategoryMealsDialogFragment.newInstance(categoryName)
+            dialogFragment.show(parentFragmentManager, "category_meals_dialog")
+        }
+    }
 
 
     private fun prepareRandomMealsRecyclerView() {
@@ -85,6 +93,7 @@ class HomeFragment : Fragment() {
             startMealActivity(meal)
         }
     }
+
 
     private fun prepareCategoriesRecyclerView() {
         binding.rvCategories.apply {
